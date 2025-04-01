@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Anime Template">
+    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Categories | The Anime Site</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/plyr.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="./index.html">
+                            <img src="{{ url_for('static', filename='img/logo.png') }}" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li class="active"><a href="./index.html">Homepage</a></li>
+                                <li><a href="./categories.html">Categories</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <div class="header__right">
+                        {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('logout') }}"><span class="icon_profile"></span> Logout</a>
+                        {% else %}
+                            <a href="{{ url_for('login') }}"><span class="icon_profile"></span> Login</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__links">
+                        <a href="./index.html"><i class="fa fa-home"></i> Home</a>
+                        <span>Categories<span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Product Section Begin -->
+    <section class="product-page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="product__page__content">
+                        <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8  col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Genres</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <!-- <div class="product__item__pic set-bg" data-setbg="img/popular/popular-1.jpg">
+                                    </div> -->
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/romance.html">Romance</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/scifi.html">Sci-Fi</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/fantasy.html">Fantasy</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/sliceoflife.html">Slice of Life</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/comedy.html">Comedy</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/drama.html">Drama</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/mystery.html">Mystery</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/action.html">Action</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/supernatural.html">Supernatural</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/adventure.html">Adventure</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/horror.html">Horror</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/suspense.html">Suspense</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="product__page__content">
+                        <div class="product__page__title">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8  col-sm-6">
+                                    <div class="section-title">
+                                        <h4>Sub-Genres</h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <!-- <div class="product__item__pic set-bg" data-setbg="img/popular/popular-1.jpg">
+                                    </div> -->
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/cgdct.html">CGDCT</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/music.html">Music</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/school.html">School</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/iyashikei.html">Iyashikei</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/mecha.html">Mecha</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/military.html">Military</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/psychological.html">Psychological</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/timetravel.html">Time Travel</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/supernatural.html">Supernatural</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/gaghumor.html">Gag Humor</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/harem.html">Harem</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/parody.html">Parody</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/isekai.html">Isekai</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/gore.html">Gore</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                <div class="product__item">
+                                    <div class="product__item__text">
+                                        <h5><a href="genres/historical.html">Historical</a></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-8">
+                    <div class="product__sidebar">
+                        <div class="product__sidebar__view">
+                            <div class="section-title">
+                                <h5>Best of 2024</h5>
+                            </div>
+                            <ul class="filter__controls">
+                                <li data-filter=".winter">Winter</li>
+                                <li data-filter=".spring">Spring</li>
+                                <li data-filter=".summer">Summer</li>
+                                <li data-filter=".fall">Fall</li>
+                            </ul>
+                            <div class="filter__gallery">
+                                <div class="product__sidebar__view__item set-bg mix summer"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-1.jpg') }}">
+                                    <h5><a href="/anime48.html">Makeine: Too Many Losing Heroines!</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix winter"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-2.jpg') }}">
+                                    <h5><a href="/anime101.html">Dungeon Meshi</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix fall"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-3.jpg') }}">
+                                    <h5><a href="/anime107.html">Dandadan</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix winter"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-4.jpg') }}">
+                                    <h5><a href="/anime54.html">The Dangers in My Heart Season 2</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix spring"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-5.jpg') }}">
+                                    <h5><a href="/anime46.html">Girls Band Cry</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix summer"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-6.jpg') }}">
+                                    <h5><a href="/anime105.html">Look Back</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix summer"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-7.jpg') }}">
+                                    <h5><a href="/anime51.html">Oshi No Ko Season 2</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix fall"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-8.jpg') }}">
+                                    <h5><a href="/anime42.html">Re:ZERO -Starting Life in Another World- Season 3</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix fall"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-9.jpg') }}">
+                                    <h5><a href="/anime75.html">Orb: On the Movements of Earth</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix winter"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-10.jpg') }}">
+                                    <h5><a href="/anime64.html">Classroom of the Elite 3rd Season</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix spring"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-11.jpg') }}">
+                                    <h5><a href="/anime44.html">KonoSuba: God's Blessing on This Wonderful World!</a></h5>
+                                </div>
+                                <div class="product__sidebar__view__item set-bg mix spring"
+                                    data-setbg="{{ url_for('static', filename='img/sidebar/tv-12.jpg') }}">
+                                    <h5><a href="/anime108.html">Jellyfish Can't Swim in the Night</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<!-- Product Section End -->
+
+<!-- Footer Section Begin -->
+<footer class="footer">
+    <div class="page-up">
+        <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="footer__logo">
+                    <a href="./index.html"><img src="{{ url_for('static', filename='img/logo.png') }}" alt=""></a>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="footer__nav">
+                    <ul>
+                        <li class="active"><a href="./index.html">Homepage</a></li>
+                        <li><a href="./categories.html">Categories</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+
+              </div>
+          </div>
+      </div>
+  </footer>
+  <!-- Footer Section End -->
+
+<!-- Js Plugins -->
+<script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/player.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.nice-select.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/mixitup.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/jquery.slicknav.js') }}"></script>
+<script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+
+</html>
