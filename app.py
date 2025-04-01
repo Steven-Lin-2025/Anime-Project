@@ -104,7 +104,7 @@ def categories():
     return render_template('categories.html')
 
 
-file_path = 'CS IA Anime Spreadsheet.csv'
+file_path = 'CS_IA_Anime_Spreadsheet.csv'
 data = pd.read_csv(file_path)
 
 genre_file_map = {
