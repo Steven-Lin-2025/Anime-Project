@@ -97,11 +97,11 @@ def signup():
 @app.route('/')
 @app.route('/index.html')
 def index():
-    return render_template('/index.html')
+    return render_template('index.html')
 
 @app.route('/categories.html')
 def categories():
-    return render_template('/categories.html')
+    return render_template('categories.html')
 
 
 file_path = 'CS_IA_Anime_Spreadsheet.csv'
@@ -141,7 +141,7 @@ def genrePage(genre):
     genre_name = next((key for key, value in genre_file_map.items() if value == genre_key), genre)
 
     results = genreSearch(genre_name)
-    return render_template(f'/genres/{genre}.html', results=results)
+    return render_template(f'genres/{genre}.html', results=results)
 
 @app.route('/anime<id>.html')
 def animePage(id):
@@ -160,7 +160,7 @@ def animePage(id):
         Review.timestamp.desc()
     ).all()
 
-    return render_template('/anime.html', anime=anime, genres=anime_genres, reviews=reviews, special_user = special_user)
+    return render_template('anime.html', anime=anime, genres=anime_genres, reviews=reviews, special_user = special_user)
 
 @app.route('/anime/review/<int:id>', methods=['POST'])
 @login_required
@@ -173,7 +173,7 @@ def write_review(id):
     db.session.commit()
 
     flash('Your review has been submitted')
-    return redirect(url_for('/animePage', id=id))
+    return redirect(url_for('animePage', id=id))
 
 @app.route('/anime/review/delete/<int:review_id>', methods=['POST'])
 @login_required
@@ -183,14 +183,14 @@ def delete_review(review_id):
     # Check if the current user is the author of the review
     if review.username != current_user.username:
         flash("You are not authorized to delete this review.")
-        return redirect(url_for('/anime_page', id=review.anime_id))
+        return redirect(url_for('anime_page', id=review.anime_id))
 
     # Delete the review
     db.session.delete(review)
     db.session.commit()
 
     flash('Review has been deleted successfully!')
-    return redirect(url_for('/animePage', id=review.anime_id))
+    return redirect(url_for('animePage', id=review.anime_id))
 
 
 if __name__ == '__main__':
