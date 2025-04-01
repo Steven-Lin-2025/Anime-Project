@@ -7,7 +7,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime
 import gc
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="templates")
 
 gc.collect()
 
